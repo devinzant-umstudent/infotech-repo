@@ -3,7 +3,7 @@ Say you mis-typed a password when creating an account in MySQL. Or perhaps, like
 
 Regardless, you don't like your password, and you want to change it. This process is actually pretty simple, but you may run into a few roadblocks, which we'll discuss as they pop up.
 
-# The process
+# The Process
 First, we'll get into MySQL using root. To do so, use the following commands: 
 ```
 sudo mysql -u root
@@ -47,3 +47,9 @@ $\color{Red}\large{\textbf{I WOULD NOT RECOMMEND DOING THIS ON A PRODUCTION SERV
 $\color{Red}\large{\textbf{I ONLY DID THIS BECAUSE I DON'T CARE WHAT HAPPENS WITH THIS VM.}}$
 
 The code for uninstalling password validation is `UNINSTALL COMPONENT 'file://component_validate_password';`. Once you do this, you can change user passwords to whatever you want because there are no rules about password length, etc. Once you've done this, IMMEDIATELY reinstall by using `INSTALL COMPONENT 'file://component_validate_password';`. I really have no idea why I had to do this in the first place, as I can't recreate the issue today. But there it is.
+
+# Removing a User Entirely
+Just for fun, let's remove `demo_user`, since I won't be using them anymore. You could consider this another workaround for the password issue (just remove them and create them again), assuming there aren't any important privileges associated with the user.
+
+The command to remove a user is `DROP`, as in `DROP USER 'demo_user'@'localhost';`
+<img width="1280" height="984" alt="image" src="https://github.com/user-attachments/assets/899cfa29-35e4-4b58-bfce-4ee3922250d7" />
